@@ -76,7 +76,7 @@ setInterval(async () => {
     }
 
     for (const maintenance of in_progress) {
-        in_progress_embed.addField(maintenance.name, `Impact: ${maintenance.impact}\nStarted: ${new Date(maintenance.started_at).toLocaleString()}\nScheduled Until: ${new Date(maintenance.scheduled_until).toLocaleString()}`);
+        in_progress_embed.addField(maintenance.name, `Impact: ${maintenance.impact}\nStarted: ${new Date(maintenance.started_at).toLocaleString()}\nScheduled Until: ${new Date(maintenance.scheduled_until).toLocaleString()}\nMore info: ${maintenance.shortlink}`);
     }
 
     const upcoming_embed = new MessageEmbed().setTitle('Upcoming').setTimestamp();
@@ -88,7 +88,7 @@ setInterval(async () => {
     }
 
     for (const maintenance of upcoming) {
-        upcoming_embed.addField(maintenance.name, `Impact: ${maintenance.impact}\nScheduled For: ${new Date(maintenance.scheduled_for).toLocaleString()}\nScheduled Until: ${new Date(maintenance.scheduled_until).toLocaleString()}`);
+        upcoming_embed.addField(maintenance.name, `Impact: ${maintenance.impact}\nScheduled For: ${new Date(maintenance.scheduled_for).toLocaleString()}\nScheduled Until: ${new Date(maintenance.scheduled_until).toLocaleString()}\nMore info: ${maintenance.shortlink}`);
     }
 
     const completed_embed = new MessageEmbed().setTitle('Completed').setTimestamp();
@@ -100,7 +100,7 @@ setInterval(async () => {
     }
 
     for (const maintenance of completed) {
-        completed_embed.addField(maintenance.name, `Impact: ${maintenance.impact}\nStarted: ${new Date(maintenance.started_at).toLocaleString()}\nResolved: ${new Date(maintenance.resolved_at).toLocaleString()}`);
+        completed_embed.addField(maintenance.name, `Impact: ${maintenance.impact}\nStarted: ${new Date(maintenance.started_at).toLocaleString()}\nResolved: ${new Date(maintenance.resolved_at).toLocaleString()}\nMore info: ${maintenance.shortlink}`);
     }
 
     await message.edit({ embeds: [ in_progress_embed, upcoming_embed, completed_embed ] });
