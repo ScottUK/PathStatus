@@ -113,6 +113,7 @@ async function check() {
         completed_embed.addField(maintenance.name, `Impact: ${maintenance.impact}\nStarted: ${new Date(maintenance.started_at).toLocaleString()}\nResolved: ${new Date(maintenance.resolved_at).toLocaleString()}\nMore info: ${maintenance.shortlink}`);
     }
 
+    await message.edit('Scheduled Maintenance:');
     await message.edit({ embeds: [ in_progress_embed, upcoming_embed, completed_embed ] });
 }
 
