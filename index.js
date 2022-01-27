@@ -30,7 +30,7 @@ client.once('ready', async () => {
     }
 
     if (!messageFound) {
-        message = await channel.send('Checking for Maintenance...');
+        message = await channel.send('Checking for Maintenance... Gimme a minute!');
 
         config.message_id = message.id;
 
