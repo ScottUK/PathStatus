@@ -42,7 +42,17 @@ client.once('ready', async () => {
     console.log('Bot started.');
 });
 
+setTimeout(() => {
+    if (!ready) return;
+    
+    check();
+}, 5000);
+
 setInterval(async () => {
+    await check();
+}, config.interval_check);
+
+async function check() {
     if (!ready) return;
 
     const response = await axios.get('https://status.path.net/api/v2/scheduled-maintenances.json');
@@ -104,7 +114,6 @@ setInterval(async () => {
     }
 
     await message.edit({ embeds: [ in_progress_embed, upcoming_embed, completed_embed ] });
-
-}, config.interval_check);
+}
 
 client.login(config.token);
